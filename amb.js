@@ -60,7 +60,7 @@ var StudentOperation = /** @class */ (function () {
                     case 1:
                         response = _c.sent();
                         data = response.data;
-                        return [2 /*return*/, { error: data.error, valid: data.valid, message: data.message }];
+                        return [2 /*return*/, { error: data.error, valid: data.valid, message: data.message, token: data.token }];
                     case 2:
                         error_1 = _c.sent();
                         console.log("Error logging in: ", (_a = error_1 === null || error_1 === void 0 ? void 0 : error_1.response) === null || _a === void 0 ? void 0 : _a.data);
@@ -71,7 +71,7 @@ var StudentOperation = /** @class */ (function () {
             });
         });
     };
-    StudentOperation.prototype.create = function (info) {
+    StudentOperation.prototype.create = function (info, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
             var response, data, error_2;
@@ -81,6 +81,9 @@ var StudentOperation = /** @class */ (function () {
                         _c.trys.push([0, 2, , 3]);
                         return [4 /*yield*/, axios_1.default.post("".concat(this.baseUrl, "/create"), info, {
                                 withCredentials: true,
+                                headers: {
+                                    Authorization: token.token
+                                }
                             })];
                     case 1:
                         response = _c.sent();
@@ -96,7 +99,7 @@ var StudentOperation = /** @class */ (function () {
             });
         });
     };
-    StudentOperation.prototype.createByFile = function (info) {
+    StudentOperation.prototype.createByFile = function (info, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
             var formData, response, data, error_3;
@@ -109,6 +112,7 @@ var StudentOperation = /** @class */ (function () {
                         return [4 /*yield*/, axios_1.default.post("".concat(this.baseUrl, "/create_by_file"), formData, {
                                 headers: {
                                     'Content-Type': 'multipart/form-data',
+                                    Authorization: token.token
                                 },
                                 withCredentials: true,
                             })];
@@ -126,7 +130,7 @@ var StudentOperation = /** @class */ (function () {
             });
         });
     };
-    StudentOperation.prototype.updateByStudent = function (info, condition) {
+    StudentOperation.prototype.updateByStudent = function (info, condition, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
             var response, data, error_4;
@@ -136,6 +140,9 @@ var StudentOperation = /** @class */ (function () {
                         _c.trys.push([0, 2, , 3]);
                         return [4 /*yield*/, axios_1.default.put("".concat(this.baseUrl, "/update?student_id=").concat(condition.student_id), info, {
                                 withCredentials: true,
+                                headers: {
+                                    Authorization: token.token
+                                }
                             })];
                     case 1:
                         response = _c.sent();
@@ -151,7 +158,7 @@ var StudentOperation = /** @class */ (function () {
             });
         });
     };
-    StudentOperation.prototype.updateByAdmin = function (info, condition) {
+    StudentOperation.prototype.updateByAdmin = function (info, condition, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
             var response, data, error_5;
@@ -161,6 +168,9 @@ var StudentOperation = /** @class */ (function () {
                         _c.trys.push([0, 2, , 3]);
                         return [4 /*yield*/, axios_1.default.put("".concat(this.baseUrl, "/update?student_id=").concat(condition.student_id), info, {
                                 withCredentials: true,
+                                headers: {
+                                    Authorization: token.token
+                                }
                             })];
                     case 1:
                         response = _c.sent();
@@ -201,7 +211,7 @@ var StudentOperation = /** @class */ (function () {
             });
         });
     };
-    StudentOperation.prototype.delete = function (condition) {
+    StudentOperation.prototype.delete = function (condition, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
             var response, data, error_7;
@@ -211,6 +221,9 @@ var StudentOperation = /** @class */ (function () {
                         _c.trys.push([0, 2, , 3]);
                         return [4 /*yield*/, axios_1.default.delete("".concat(this.baseUrl, "/delete?student_id=").concat(condition.student_id), {
                                 withCredentials: true,
+                                headers: {
+                                    Authorization: token.token
+                                }
                             })];
                     case 1:
                         response = _c.sent();
@@ -226,7 +239,7 @@ var StudentOperation = /** @class */ (function () {
             });
         });
     };
-    StudentOperation.prototype.findByStudent = function () {
+    StudentOperation.prototype.findByStudent = function (token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
             var response, data, error_8;
@@ -236,6 +249,9 @@ var StudentOperation = /** @class */ (function () {
                         _c.trys.push([0, 2, , 3]);
                         return [4 /*yield*/, axios_1.default.post("".concat(this.baseUrl, "/get"), {
                                 withCredentials: true,
+                                headers: {
+                                    Authorization: token.token
+                                }
                             })];
                     case 1:
                         response = _c.sent();
@@ -251,7 +267,7 @@ var StudentOperation = /** @class */ (function () {
             });
         });
     };
-    StudentOperation.prototype.findByAdmin = function (info) {
+    StudentOperation.prototype.findByAdmin = function (info, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
             var response, data, error_9;
@@ -261,6 +277,9 @@ var StudentOperation = /** @class */ (function () {
                         _c.trys.push([0, 2, , 3]);
                         return [4 /*yield*/, axios_1.default.post("".concat(this.baseUrl, "/get"), info, {
                                 withCredentials: true,
+                                headers: {
+                                    Authorization: token.token
+                                }
                             })];
                     case 1:
                         response = _c.sent();
@@ -276,7 +295,7 @@ var StudentOperation = /** @class */ (function () {
             });
         });
     };
-    StudentOperation.prototype.findStudentRegisteredClass = function () {
+    StudentOperation.prototype.findStudentRegisteredClass = function (token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
             var response, data, error_10;
@@ -286,6 +305,9 @@ var StudentOperation = /** @class */ (function () {
                         _c.trys.push([0, 2, , 3]);
                         return [4 /*yield*/, axios_1.default.get("".concat(this.baseUrl, "/get_classes"), {
                                 withCredentials: true,
+                                headers: {
+                                    Authorization: token.token
+                                }
                             })];
                     case 1:
                         response = _c.sent();
@@ -301,7 +323,7 @@ var StudentOperation = /** @class */ (function () {
             });
         });
     };
-    StudentOperation.prototype.getScore = function () {
+    StudentOperation.prototype.getScore = function (token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
             var response, data, error_11;
@@ -311,6 +333,9 @@ var StudentOperation = /** @class */ (function () {
                         _c.trys.push([0, 2, , 3]);
                         return [4 /*yield*/, axios_1.default.get("".concat(this.baseUrl, "/get_score"), {
                                 withCredentials: true,
+                                headers: {
+                                    Authorization: token.token
+                                }
                             })];
                     case 1:
                         response = _c.sent();
@@ -350,7 +375,7 @@ var TeacherOperation = /** @class */ (function () {
                     case 1:
                         response = _c.sent();
                         data = response.data;
-                        return [2 /*return*/, { error: data.error, valid: data.valid, message: data.message }];
+                        return [2 /*return*/, { error: data.error, valid: data.valid, message: data.message, token: data.token }];
                     case 2:
                         error_12 = _c.sent();
                         console.log("Error logging in: ", (_a = error_12 === null || error_12 === void 0 ? void 0 : error_12.response) === null || _a === void 0 ? void 0 : _a.data);
@@ -361,7 +386,7 @@ var TeacherOperation = /** @class */ (function () {
             });
         });
     };
-    TeacherOperation.prototype.create = function (info) {
+    TeacherOperation.prototype.create = function (info, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
             var response, data, error_13;
@@ -371,6 +396,9 @@ var TeacherOperation = /** @class */ (function () {
                         _c.trys.push([0, 2, , 3]);
                         return [4 /*yield*/, axios_1.default.post("".concat(this.baseUrl, "/create"), info, {
                                 withCredentials: true,
+                                headers: {
+                                    Authorization: token.token
+                                }
                             })];
                     case 1:
                         response = _c.sent();
@@ -386,7 +414,7 @@ var TeacherOperation = /** @class */ (function () {
             });
         });
     };
-    TeacherOperation.prototype.updateByTeacher = function (info, condition) {
+    TeacherOperation.prototype.updateByTeacher = function (info, condition, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
             var response, data, error_14;
@@ -396,6 +424,9 @@ var TeacherOperation = /** @class */ (function () {
                         _c.trys.push([0, 2, , 3]);
                         return [4 /*yield*/, axios_1.default.put("".concat(this.baseUrl, "/update?teacher_id=").concat(condition.teacher_id), info, {
                                 withCredentials: true,
+                                headers: {
+                                    Authorization: token.token
+                                }
                             })];
                     case 1:
                         response = _c.sent();
@@ -411,7 +442,7 @@ var TeacherOperation = /** @class */ (function () {
             });
         });
     };
-    TeacherOperation.prototype.updateByAdmin = function (info, condition) {
+    TeacherOperation.prototype.updateByAdmin = function (info, condition, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
             var response, data, error_15;
@@ -421,6 +452,9 @@ var TeacherOperation = /** @class */ (function () {
                         _c.trys.push([0, 2, , 3]);
                         return [4 /*yield*/, axios_1.default.put("".concat(this.baseUrl, "/update?teacher_id=").concat(condition.teacher_id), info, {
                                 withCredentials: true,
+                                headers: {
+                                    Authorization: token.token
+                                }
                             })];
                     case 1:
                         response = _c.sent();
@@ -436,7 +470,7 @@ var TeacherOperation = /** @class */ (function () {
             });
         });
     };
-    TeacherOperation.prototype.updatePassword = function (info) {
+    TeacherOperation.prototype.updatePassword = function (info, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
             var response, data, error_16;
@@ -446,6 +480,9 @@ var TeacherOperation = /** @class */ (function () {
                         _c.trys.push([0, 2, , 3]);
                         return [4 /*yield*/, axios_1.default.put("".concat(this.baseUrl, "/update_password"), info, {
                                 withCredentials: true,
+                                headers: {
+                                    Authorization: token.token
+                                }
                             })];
                     case 1:
                         response = _c.sent();
@@ -461,7 +498,7 @@ var TeacherOperation = /** @class */ (function () {
             });
         });
     };
-    TeacherOperation.prototype.delete = function (condition) {
+    TeacherOperation.prototype.delete = function (condition, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
             var response, data, error_17;
@@ -471,6 +508,9 @@ var TeacherOperation = /** @class */ (function () {
                         _c.trys.push([0, 2, , 3]);
                         return [4 /*yield*/, axios_1.default.delete("".concat(this.baseUrl, "/delete?teacher_id=").concat(condition.teacher_id), {
                                 withCredentials: true,
+                                headers: {
+                                    Authorization: token.token
+                                }
                             })];
                     case 1:
                         response = _c.sent();
@@ -486,7 +526,7 @@ var TeacherOperation = /** @class */ (function () {
             });
         });
     };
-    TeacherOperation.prototype.findByTeacher = function () {
+    TeacherOperation.prototype.findByTeacher = function (token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
             var response, data, error_18;
@@ -496,6 +536,9 @@ var TeacherOperation = /** @class */ (function () {
                         _c.trys.push([0, 2, , 3]);
                         return [4 /*yield*/, axios_1.default.post("".concat(this.baseUrl, "/get"), {
                                 withCredentials: true,
+                                headers: {
+                                    Authorization: token.token
+                                }
                             })];
                     case 1:
                         response = _c.sent();
@@ -511,7 +554,7 @@ var TeacherOperation = /** @class */ (function () {
             });
         });
     };
-    TeacherOperation.prototype.findByAdmin = function (info) {
+    TeacherOperation.prototype.findByAdmin = function (info, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
             var response, data, error_19;
@@ -521,6 +564,9 @@ var TeacherOperation = /** @class */ (function () {
                         _c.trys.push([0, 2, , 3]);
                         return [4 /*yield*/, axios_1.default.post("".concat(this.baseUrl, "/get"), info, {
                                 withCredentials: true,
+                                headers: {
+                                    Authorization: token.token
+                                }
                             })];
                     case 1:
                         response = _c.sent();
@@ -536,7 +582,7 @@ var TeacherOperation = /** @class */ (function () {
             });
         });
     };
-    TeacherOperation.prototype.findTeacherRegisteredClass = function () {
+    TeacherOperation.prototype.findTeacherRegisteredClass = function (token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
             var response, data, error_20;
@@ -546,6 +592,9 @@ var TeacherOperation = /** @class */ (function () {
                         _c.trys.push([0, 2, , 3]);
                         return [4 /*yield*/, axios_1.default.get("".concat(this.baseUrl, "/get_classes"), {
                                 withCredentials: true,
+                                headers: {
+                                    Authorization: token.token
+                                }
                             })];
                     case 1:
                         response = _c.sent();
@@ -585,7 +634,7 @@ var AdminOperation = /** @class */ (function () {
                     case 1:
                         response = _c.sent();
                         data = response.data;
-                        return [2 /*return*/, { error: data.error, valid: data.valid, message: data.message }];
+                        return [2 /*return*/, { error: data.error, valid: data.valid, message: data.message, token: data.token }];
                     case 2:
                         error_21 = _c.sent();
                         console.log("Error logging in: ", (_a = error_21 === null || error_21 === void 0 ? void 0 : error_21.response) === null || _a === void 0 ? void 0 : _a.data);
@@ -596,7 +645,7 @@ var AdminOperation = /** @class */ (function () {
             });
         });
     };
-    AdminOperation.prototype.create = function (info) {
+    AdminOperation.prototype.create = function (info, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
             var response, data, error_22;
@@ -606,6 +655,9 @@ var AdminOperation = /** @class */ (function () {
                         _c.trys.push([0, 2, , 3]);
                         return [4 /*yield*/, axios_1.default.post("".concat(this.baseUrl, "/create"), info, {
                                 withCredentials: true,
+                                headers: {
+                                    Authorization: token.token
+                                }
                             })];
                     case 1:
                         response = _c.sent();
@@ -628,7 +680,7 @@ var CourseOperation = /** @class */ (function () {
     function CourseOperation() {
         this.baseUrl = "https://academic-management-backend.onrender.com/api/v1/courses";
     }
-    CourseOperation.prototype.create = function (info) {
+    CourseOperation.prototype.create = function (info, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
             var response, data, error_23;
@@ -638,6 +690,9 @@ var CourseOperation = /** @class */ (function () {
                         _c.trys.push([0, 2, , 3]);
                         return [4 /*yield*/, axios_1.default.post("".concat(this.baseUrl, "/create"), info, {
                                 withCredentials: true,
+                                headers: {
+                                    Authorization: token.token
+                                }
                             })];
                     case 1:
                         response = _c.sent();
@@ -653,7 +708,7 @@ var CourseOperation = /** @class */ (function () {
             });
         });
     };
-    CourseOperation.prototype.update = function (info, condition) {
+    CourseOperation.prototype.update = function (info, condition, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
             var response, data, error_24;
@@ -663,6 +718,9 @@ var CourseOperation = /** @class */ (function () {
                         _c.trys.push([0, 2, , 3]);
                         return [4 /*yield*/, axios_1.default.put("".concat(this.baseUrl, "/update?course_id=").concat(condition.course_id), info, {
                                 withCredentials: true,
+                                headers: {
+                                    Authorization: token.token
+                                }
                             })];
                     case 1:
                         response = _c.sent();
@@ -678,7 +736,7 @@ var CourseOperation = /** @class */ (function () {
             });
         });
     };
-    CourseOperation.prototype.delete = function (condition) {
+    CourseOperation.prototype.delete = function (condition, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
             var response, data, error_25;
@@ -688,6 +746,9 @@ var CourseOperation = /** @class */ (function () {
                         _c.trys.push([0, 2, , 3]);
                         return [4 /*yield*/, axios_1.default.delete("".concat(this.baseUrl, "/delete?course_id=").concat(condition.course_id), {
                                 withCredentials: true,
+                                headers: {
+                                    Authorization: token.token
+                                }
                             })];
                     case 1:
                         response = _c.sent();
@@ -703,7 +764,7 @@ var CourseOperation = /** @class */ (function () {
             });
         });
     };
-    CourseOperation.prototype.findAllCourses = function (info) {
+    CourseOperation.prototype.findAllCourses = function (info, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
             var response, data, error_26;
@@ -713,6 +774,9 @@ var CourseOperation = /** @class */ (function () {
                         _c.trys.push([0, 2, , 3]);
                         return [4 /*yield*/, axios_1.default.post("".concat(this.baseUrl, "/get"), info, {
                                 withCredentials: true,
+                                headers: {
+                                    Authorization: token.token
+                                }
                             })];
                     case 1:
                         response = _c.sent();
@@ -728,7 +792,7 @@ var CourseOperation = /** @class */ (function () {
             });
         });
     };
-    CourseOperation.prototype.findClasses = function (condition) {
+    CourseOperation.prototype.findClasses = function (condition, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
             var response, data, error_27;
@@ -738,6 +802,9 @@ var CourseOperation = /** @class */ (function () {
                         _c.trys.push([0, 2, , 3]);
                         return [4 /*yield*/, axios_1.default.get("".concat(this.baseUrl, "/get_classes?course_id=").concat(condition.course_id), {
                                 withCredentials: true,
+                                headers: {
+                                    Authorization: token.token
+                                }
                             })];
                     case 1:
                         response = _c.sent();
@@ -760,7 +827,7 @@ var ClassOperation = /** @class */ (function () {
     function ClassOperation() {
         this.baseUrl = "https://academic-management-backend.onrender.com/api/v1/classes";
     }
-    ClassOperation.prototype.create = function (info) {
+    ClassOperation.prototype.create = function (info, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
             var response, data, error_28;
@@ -770,6 +837,9 @@ var ClassOperation = /** @class */ (function () {
                         _c.trys.push([0, 2, , 3]);
                         return [4 /*yield*/, axios_1.default.post("".concat(this.baseUrl, "/create"), info, {
                                 withCredentials: true,
+                                headers: {
+                                    Authorization: token.token
+                                }
                             })];
                     case 1:
                         response = _c.sent();
@@ -785,7 +855,7 @@ var ClassOperation = /** @class */ (function () {
             });
         });
     };
-    ClassOperation.prototype.register = function (info) {
+    ClassOperation.prototype.register = function (info, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
             var response, data, error_29;
@@ -795,6 +865,9 @@ var ClassOperation = /** @class */ (function () {
                         _c.trys.push([0, 2, , 3]);
                         return [4 /*yield*/, axios_1.default.post("".concat(this.baseUrl, "/register"), info, {
                                 withCredentials: true,
+                                headers: {
+                                    Authorization: token.token
+                                }
                             })];
                     case 1:
                         response = _c.sent();
@@ -810,7 +883,7 @@ var ClassOperation = /** @class */ (function () {
             });
         });
     };
-    ClassOperation.prototype.updateScore = function (info) {
+    ClassOperation.prototype.updateScore = function (info, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
             var response, data, error_30;
@@ -820,6 +893,9 @@ var ClassOperation = /** @class */ (function () {
                         _c.trys.push([0, 2, , 3]);
                         return [4 /*yield*/, axios_1.default.post("".concat(this.baseUrl, "/update_score"), info, {
                                 withCredentials: true,
+                                headers: {
+                                    Authorization: token.token
+                                }
                             })];
                     case 1:
                         response = _c.sent();
@@ -835,7 +911,7 @@ var ClassOperation = /** @class */ (function () {
             });
         });
     };
-    ClassOperation.prototype.cancelRegister = function (info) {
+    ClassOperation.prototype.cancelRegister = function (info, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
             var response, data, error_31;
@@ -845,6 +921,9 @@ var ClassOperation = /** @class */ (function () {
                         _c.trys.push([0, 2, , 3]);
                         return [4 /*yield*/, axios_1.default.put("".concat(this.baseUrl, "/cancel_register"), info, {
                                 withCredentials: true,
+                                headers: {
+                                    Authorization: token.token
+                                }
                             })];
                     case 1:
                         response = _c.sent();

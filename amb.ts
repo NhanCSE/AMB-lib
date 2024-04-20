@@ -1,27 +1,9 @@
 import axios, { AxiosResponse } from "axios";
 const FormData = require("form-data");
 
-// class UserOperation {
-//     private baseUrl: string;
-//     constructor() {
-//         this.baseUrl = "http://localhost:5000/api/v1/users";
-//     }
-
-//     async getAuthenticatedUserInfo() {
-//         try {
-//             const response = await axios.get(`${this.baseUrl}/get_info`, {
-//                 withCredentials: true,
-//             });
-
-//             const data = response.data;
-//             return { error: data.error, info: data.info, message: data.message };
-//         } catch (error: any) {
-//             console.log("Error getting authenticated user info: ", error?.response?.data);
-//             console.error("Request that caused the error: ", error?.request);
-//             return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
-//         }
-//     }
-// }
+export interface token {
+    token: string
+}
 
 export interface CreatingUserInfo {
     fullname: string,
@@ -106,7 +88,7 @@ class StudentOperation {
             });
 
             const data = response.data;
-            return { error: data.error, valid: data.valid, message: data.message };
+            return { error: data.error, valid: data.valid, message: data.message, token: data.token };
         } catch (error: any) {
             console.log("Error logging in: ", error?.response?.data);
             console.error("Request that caused the error: ", error?.request);
@@ -114,10 +96,13 @@ class StudentOperation {
         }
     }
 
-    async create(info: CreatingStudentInfo) {
+    async create(info: CreatingStudentInfo, token: token) {
         try {
             const response: AxiosResponse = await axios.post(`${this.baseUrl}/create`, info, {
                 withCredentials: true,
+                headers: {
+                    Authorization: token.token
+                }
             });
             
             const data = response.data;
@@ -129,7 +114,7 @@ class StudentOperation {
         }
     }
 
-    async createByFile(info: CreatingStudentByFile) {
+    async createByFile(info: CreatingStudentByFile, token: token) {
         try {
             const formData = new FormData();
             formData.append("file", info.file);
@@ -137,6 +122,8 @@ class StudentOperation {
             const response: AxiosResponse = await axios.post(`${this.baseUrl}/create_by_file`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
+                    Authorization: token.token
+                    
                 },
                 withCredentials: true,
             });
@@ -150,10 +137,13 @@ class StudentOperation {
         }
     }
 
-    async updateByStudent(info: UpdatingStudentInfoByStudent, condition: StudentID) {
+    async updateByStudent(info: UpdatingStudentInfoByStudent, condition: StudentID, token: token) {
         try {
             const response: AxiosResponse = await axios.put(`${this.baseUrl}/update?student_id=${condition.student_id}`, info, {
                 withCredentials: true,
+                headers: {
+                    Authorization: token.token
+                }
             });
             
             const data = response.data;
@@ -165,10 +155,13 @@ class StudentOperation {
         }
     }
 
-    async updateByAdmin(info: UpdatingStudentInfoByAdmin, condition: StudentID) {
+    async updateByAdmin(info: UpdatingStudentInfoByAdmin, condition: StudentID, token: token) {
         try {
             const response: AxiosResponse = await axios.put(`${this.baseUrl}/update?student_id=${condition.student_id}`, info, {
                 withCredentials: true,
+                headers: {
+                    Authorization: token.token
+                }
             });
             
             const data = response.data;
@@ -194,10 +187,14 @@ class StudentOperation {
             return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
         }
     }
-    async delete(condition: StudentID) {
+
+    async delete(condition: StudentID, token: token) {
         try {
             const response: AxiosResponse = await axios.delete(`${this.baseUrl}/delete?student_id=${condition.student_id}`, {
                 withCredentials: true,
+                headers: {
+                    Authorization: token.token
+                }
             });
             
             const data = response.data;
@@ -209,10 +206,13 @@ class StudentOperation {
         }
     }
 
-    async findByStudent() {
+    async findByStudent(token: token) {
         try {
             const response: AxiosResponse = await axios.post(`${this.baseUrl}/get`, {
                 withCredentials: true,
+                headers: {
+                    Authorization: token.token
+                }
             });
             
             const data = response.data;
@@ -224,10 +224,13 @@ class StudentOperation {
         }
     }
 
-    async findByAdmin(info: FindingStudentInfoByAdmin) {
+    async findByAdmin(info: FindingStudentInfoByAdmin, token: token) {
         try {
             const response: AxiosResponse = await axios.post(`${this.baseUrl}/get`, info, {
                 withCredentials: true,
+                headers: {
+                    Authorization: token.token
+                }
             });
             
             const data = response.data;
@@ -239,10 +242,13 @@ class StudentOperation {
         }
     }
 
-    async findStudentRegisteredClass() {
+    async findStudentRegisteredClass(token: token) {
         try {
             const response: AxiosResponse = await axios.get(`${this.baseUrl}/get_classes`, {
                 withCredentials: true,
+                headers: {
+                    Authorization: token.token
+                }
             });
             
             const data = response.data;
@@ -254,10 +260,13 @@ class StudentOperation {
         }
     }
 
-    async getScore() {
+    async getScore(token: token) {
         try {
             const response: AxiosResponse = await axios.get(`${this.baseUrl}/get_score`, {
                 withCredentials: true,
+                headers: {
+                    Authorization: token.token
+                }
             });
             
             const data = response.data;
@@ -326,7 +335,7 @@ class TeacherOperation {
             });
 
             const data = response.data;
-            return { error: data.error, valid: data.valid, message: data.message };
+            return { error: data.error, valid: data.valid, message: data.message, token: data.token };
         } catch (error: any) {
             console.log("Error logging in: ", error?.response?.data);
             console.error("Request that caused the error: ", error?.request);
@@ -334,10 +343,13 @@ class TeacherOperation {
         }
     }
 
-    async create(info: CreatingTeacherInfo) {
+    async create(info: CreatingTeacherInfo, token: token) {
         try {
             const response: AxiosResponse = await axios.post(`${this.baseUrl}/create`, info, {
                 withCredentials: true,
+                headers: {
+                    Authorization: token.token
+                }
             });
             
             const data = response.data;
@@ -349,10 +361,13 @@ class TeacherOperation {
         }
     }
 
-    async updateByTeacher(info: UpdatingTeacherByTeacherInfo, condition: TeacherID) {
+    async updateByTeacher(info: UpdatingTeacherByTeacherInfo, condition: TeacherID, token: token) {
         try {
             const response: AxiosResponse = await axios.put(`${this.baseUrl}/update?teacher_id=${condition.teacher_id}`, info, {
                 withCredentials: true,
+                headers: {
+                    Authorization: token.token
+                }
             });
             
             const data = response.data;
@@ -364,10 +379,13 @@ class TeacherOperation {
         }
     }
 
-    async updateByAdmin(info: UpdateTeacherByAdminInfo, condition: TeacherID) {
+    async updateByAdmin(info: UpdateTeacherByAdminInfo, condition: TeacherID, token: token) {
         try {
             const response: AxiosResponse = await axios.put(`${this.baseUrl}/update?teacher_id=${condition.teacher_id}`, info, {
                 withCredentials: true,
+                headers: {
+                    Authorization: token.token
+                }
             });
             
             const data = response.data;
@@ -379,10 +397,13 @@ class TeacherOperation {
         }
     }
 
-    async updatePassword(info: UpdatingPassword) {
+    async updatePassword(info: UpdatingPassword, token: token) {
         try {
             const response: AxiosResponse = await axios.put(`${this.baseUrl}/update_password`, info, {
                 withCredentials: true,
+                headers: {
+                    Authorization: token.token
+                }
             });
             
             const data = response.data;
@@ -393,10 +414,13 @@ class TeacherOperation {
             return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
         }
     }
-    async delete(condition: TeacherID) {
+    async delete(condition: TeacherID, token: token) {
         try {
             const response: AxiosResponse = await axios.delete(`${this.baseUrl}/delete?teacher_id=${condition.teacher_id}`, {
                 withCredentials: true,
+                headers: {
+                    Authorization: token.token
+                }
             });
             
             const data = response.data;
@@ -408,10 +432,13 @@ class TeacherOperation {
         }
     }
 
-    async findByTeacher() {
+    async findByTeacher(token: token) {
         try {
             const response: AxiosResponse = await axios.post(`${this.baseUrl}/get`, {
                 withCredentials: true,
+                headers: {
+                    Authorization: token.token
+                }
             });
             
             const data = response.data;
@@ -423,10 +450,13 @@ class TeacherOperation {
         }
     }
 
-    async findByAdmin(info: FindingStudentInfoByAdmin) {
+    async findByAdmin(info: FindingStudentInfoByAdmin, token: token) {
         try {
             const response: AxiosResponse = await axios.post(`${this.baseUrl}/get`, info, {
                 withCredentials: true,
+                headers: {
+                    Authorization: token.token
+                }
             });
             
             const data = response.data;
@@ -438,10 +468,13 @@ class TeacherOperation {
         }
     }
 
-    async findTeacherRegisteredClass() {
+    async findTeacherRegisteredClass(token: token) {
         try {
             const response: AxiosResponse = await axios.get(`${this.baseUrl}/get_classes`, {
                 withCredentials: true,
+                headers: {
+                    Authorization: token.token
+                }
             });
             
             const data = response.data;
@@ -479,7 +512,7 @@ class AdminOperation {
             });
 
             const data = response.data;
-            return { error: data.error, valid: data.valid, message: data.message };
+            return { error: data.error, valid: data.valid, message: data.message, token: data.token };
         } catch (error: any) {
             console.log("Error logging in: ", error?.response?.data);
             console.error("Request that caused the error: ", error?.request);
@@ -487,10 +520,13 @@ class AdminOperation {
         }
     }
 
-    async create(info: CreatingAdminInfo) {
+    async create(info: CreatingAdminInfo, token: token) {
         try {
             const response: AxiosResponse = await axios.post(`${this.baseUrl}/create`, info, {
                 withCredentials: true,
+                headers: {
+                    Authorization: token.token
+                }
             });
             
             const data = response.data;
@@ -533,10 +569,13 @@ class CourseOperation {
         this.baseUrl = "https://academic-management-backend.onrender.com/api/v1/courses";
     }
 
-    async create(info: CreatingCourseInfo) {
+    async create(info: CreatingCourseInfo, token: token) {
         try {
             const response: AxiosResponse = await axios.post(`${this.baseUrl}/create`, info, {
                 withCredentials: true,
+                headers: {
+                    Authorization: token.token
+                }
             });
             
             const data = response.data;
@@ -548,10 +587,13 @@ class CourseOperation {
         }
     }
 
-    async update(info: UpdatingCourseInfo, condition: CourseID) {
+    async update(info: UpdatingCourseInfo, condition: CourseID, token: token) {
         try {
             const response: AxiosResponse = await axios.put(`${this.baseUrl}/update?course_id=${condition.course_id}`, info, {
                 withCredentials: true,
+                headers: {
+                    Authorization: token.token
+                }
             });
             
             const data = response.data;
@@ -563,10 +605,13 @@ class CourseOperation {
         }
     }
 
-    async delete(condition: CourseID) {
+    async delete(condition: CourseID, token: token) {
         try {
             const response: AxiosResponse = await axios.delete(`${this.baseUrl}/delete?course_id=${condition.course_id}`, {
                 withCredentials: true,
+                headers: {
+                    Authorization: token.token
+                }
             });
             
             const data = response.data;
@@ -578,10 +623,13 @@ class CourseOperation {
         }
     }
 
-    async findAllCourses(info: UpdatingCourseInfo) {
+    async findAllCourses(info: UpdatingCourseInfo, token: token) {
         try {
             const response: AxiosResponse = await axios.post(`${this.baseUrl}/get`, info, {
                 withCredentials: true,
+                headers: {
+                    Authorization: token.token
+                }
             });
             
             const data = response.data;
@@ -593,10 +641,13 @@ class CourseOperation {
         }
     }
 
-    async findClasses(condition: CourseID) {
+    async findClasses(condition: CourseID, token: token) {
         try {
             const response: AxiosResponse = await axios.get(`${this.baseUrl}/get_classes?course_id=${condition.course_id}`, {
                 withCredentials: true,
+                headers: {
+                    Authorization: token.token
+                }
             });
             
             const data = response.data;
@@ -645,10 +696,13 @@ class ClassOperation {
         this.baseUrl = "https://academic-management-backend.onrender.com/api/v1/classes";
     }
 
-    async create(info: CreateClassInfo) {
+    async create(info: CreateClassInfo, token: token) {
         try {
             const response: AxiosResponse = await axios.post(`${this.baseUrl}/create`, info, {
                 withCredentials: true,
+                headers: {
+                    Authorization: token.token
+                }
             });
             
             const data = response.data;
@@ -660,10 +714,13 @@ class ClassOperation {
         }
     }
 
-    async register(info: RegisterClassInfo) {
+    async register(info: RegisterClassInfo, token: token) {
         try {
             const response: AxiosResponse = await axios.post(`${this.baseUrl}/register`, info, {
                 withCredentials: true,
+                headers: {
+                    Authorization: token.token
+                }
             });
             
             const data = response.data;
@@ -675,10 +732,13 @@ class ClassOperation {
         }
     }
     
-    async updateScore(info: UpdateScoreInfo) {
+    async updateScore(info: UpdateScoreInfo, token: token) {
         try {
             const response: AxiosResponse = await axios.post(`${this.baseUrl}/update_score`, info, {
                 withCredentials: true,
+                headers: {
+                    Authorization: token.token
+                }
             });
             
             const data = response.data;
@@ -690,10 +750,13 @@ class ClassOperation {
         }
     }
 
-    async cancelRegister(info: RegisterClassInfo) {
+    async cancelRegister(info: RegisterClassInfo, token: token) {
         try {
             const response: AxiosResponse = await axios.put(`${this.baseUrl}/cancel_register`, info, {
                 withCredentials: true,
+                headers: {
+                    Authorization: token.token
+                }
             });
             
             const data = response.data;
