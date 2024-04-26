@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 const FormData = require("form-data");
+import * as JSZip from 'jszip';
 
 export interface token {
     token: string
@@ -677,6 +678,14 @@ export interface RegisterClassInfo {
     class_id: string;
 }
 
+export interface SubmitFile {
+    submitFile: File
+}
+
+export interface FileName {
+    filename: string
+}
+
 export interface ClassID {
     class_id: string;
 }
@@ -765,6 +774,87 @@ class ClassOperation {
             console.log("Error create new user: ", error?.response?.data);
             console.error("Request that caused the error: ", error?.request);
             return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
+        }
+    }
+
+    async submitFile(info: SubmitFile, token: token) {
+        try {
+            const formData = new FormData();
+			formData.append('submitFile', info.submitFile);
+            const response: AxiosResponse = await axios.post(`${this.baseUrl}/submit_file`, formData, {
+                withCredentials: true,
+                headers: {
+                    Authorization: token.token
+                }
+            });
+            
+            const data = response.data;
+            return { error: data.error, data: data.data, message: data.message };
+        } catch (error: any) {
+            console.error("Request that caused the error: ", error?.request);
+            return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
+        }
+    }
+
+    async deleteSubmitFile(info: FileName, token: token) {
+        try {
+            const response: AxiosResponse = await axios.delete(`${this.baseUrl}/delete_file?filename=${info.filename}`, {
+                withCredentials: true,
+                headers: {
+                    Authorization: token.token
+                }
+            });
+            
+            const data = response.data;
+            return { error: data.error, data: data.data, message: data.message };
+        } catch (error: any) {
+            console.log("Error delete file submit: ", error?.response?.data);
+            console.error("Request that caused the error: ", error?.request);
+            return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
+        }
+    }
+
+    async showSubmitFile(info: ClassID, token: token) {
+        try {
+            const response: AxiosResponse = await axios.get(`${this.baseUrl}/show_files?class_id=${info.class_id}`, {
+                withCredentials: true,
+                headers: {
+                    Authorization: token.token
+                }
+            });
+            
+            const data = response.data;
+            return { error: data.error, data: data.data, message: data.message };
+        } catch (error: any) {
+            console.log("Error create new user: ", error?.response?.data);
+            console.error("Request that caused the error: ", error?.request);
+            return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
+        }
+    }
+
+    async getSubmitFile(info: ClassID, token: token) {
+        try {
+            const response = await axios.get(`${this.baseUrl}/get_files?class_id=${info.class_id}`, {
+                responseType: 'blob', // Set response type to blob for binary data (ZIP file)
+                withCredentials: true,
+                headers: {
+                    Authorization: token.token
+                }
+            });
+
+            // Trigger file download using the received blob (ZIP file)
+            const url = window.URL.createObjectURL(new Blob([response.data]));
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', `${info.class_id}_files.zip`);
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+
+            return { success: true };
+        } catch (error) {
+            console.error('Error downloading files:', error);
+            return { success: false, error: 'Error downloading files' };
         }
     }
 
