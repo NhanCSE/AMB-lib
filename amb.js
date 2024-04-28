@@ -43,6 +43,7 @@ var StudentOperation = /** @class */ (function () {
     function StudentOperation() {
         this.baseUrl = "https://academic-management-backend.onrender.com/api/v1/students";
     }
+    //ROLE: STUDENT
     StudentOperation.prototype.login = function (username, password) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
@@ -71,6 +72,7 @@ var StudentOperation = /** @class */ (function () {
             });
         });
     };
+    //ROLE: ADMIN
     StudentOperation.prototype.create = function (info, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
@@ -99,6 +101,7 @@ var StudentOperation = /** @class */ (function () {
             });
         });
     };
+    //ROLE: ADMIN
     StudentOperation.prototype.createByFile = function (info, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
@@ -130,6 +133,7 @@ var StudentOperation = /** @class */ (function () {
             });
         });
     };
+    //ROLE: STUDENT
     StudentOperation.prototype.updateByStudent = function (info, condition, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
@@ -158,6 +162,7 @@ var StudentOperation = /** @class */ (function () {
             });
         });
     };
+    //ROLE: ADMIN
     StudentOperation.prototype.updateByAdmin = function (info, condition, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
@@ -186,6 +191,7 @@ var StudentOperation = /** @class */ (function () {
             });
         });
     };
+    //ROLE: DO NOT NEED ROLE AND TOKEN
     StudentOperation.prototype.updatePassword = function (info) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
@@ -211,6 +217,7 @@ var StudentOperation = /** @class */ (function () {
             });
         });
     };
+    //ROLE: ADMIN
     StudentOperation.prototype.delete = function (condition, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
@@ -239,6 +246,7 @@ var StudentOperation = /** @class */ (function () {
             });
         });
     };
+    //ROLE: STUDENT
     StudentOperation.prototype.findByStudent = function (token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
@@ -267,6 +275,7 @@ var StudentOperation = /** @class */ (function () {
             });
         });
     };
+    //ROLE: ADMIN
     StudentOperation.prototype.findByAdmin = function (info, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
@@ -295,6 +304,7 @@ var StudentOperation = /** @class */ (function () {
             });
         });
     };
+    //ROLE: STUDENT
     StudentOperation.prototype.findStudentRegisteredClass = function (token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
@@ -323,6 +333,7 @@ var StudentOperation = /** @class */ (function () {
             });
         });
     };
+    //ROLE: STUDENT
     StudentOperation.prototype.getScore = function (token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
@@ -358,6 +369,7 @@ var TeacherOperation = /** @class */ (function () {
     function TeacherOperation() {
         this.baseUrl = "https://academic-management-backend.onrender.com/api/v1/teachers";
     }
+    //ROLE: TEACHER
     TeacherOperation.prototype.login = function (username, password) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
@@ -386,6 +398,7 @@ var TeacherOperation = /** @class */ (function () {
             });
         });
     };
+    //ROLE: ADMIN
     TeacherOperation.prototype.create = function (info, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
@@ -414,6 +427,7 @@ var TeacherOperation = /** @class */ (function () {
             });
         });
     };
+    //ROLE: TEACHER
     TeacherOperation.prototype.updateByTeacher = function (info, condition, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
@@ -442,6 +456,7 @@ var TeacherOperation = /** @class */ (function () {
             });
         });
     };
+    //ROLE: ADMIN
     TeacherOperation.prototype.updateByAdmin = function (info, condition, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
@@ -470,6 +485,7 @@ var TeacherOperation = /** @class */ (function () {
             });
         });
     };
+    //ROLE: TEACHER
     TeacherOperation.prototype.updatePassword = function (info, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
@@ -498,6 +514,7 @@ var TeacherOperation = /** @class */ (function () {
             });
         });
     };
+    //ROLE: TEACHER
     TeacherOperation.prototype.delete = function (condition, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
@@ -526,6 +543,7 @@ var TeacherOperation = /** @class */ (function () {
             });
         });
     };
+    //ROLE: TEACHER
     TeacherOperation.prototype.findByTeacher = function (token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
@@ -554,6 +572,7 @@ var TeacherOperation = /** @class */ (function () {
             });
         });
     };
+    //ROLE: ADMNIN
     TeacherOperation.prototype.findByAdmin = function (info, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
@@ -582,6 +601,7 @@ var TeacherOperation = /** @class */ (function () {
             });
         });
     };
+    //ROLE: TEACHER
     TeacherOperation.prototype.findTeacherRegisteredClass = function (token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
@@ -617,6 +637,7 @@ var AdminOperation = /** @class */ (function () {
     function AdminOperation() {
         this.baseUrl = "https://academic-management-backend.onrender.com/api/v1/admins";
     }
+    //ROLE: ADMIN
     AdminOperation.prototype.login = function (username, password) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
@@ -645,6 +666,7 @@ var AdminOperation = /** @class */ (function () {
             });
         });
     };
+    //ROLE: ADMIN
     AdminOperation.prototype.create = function (info, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
@@ -680,6 +702,7 @@ var CourseOperation = /** @class */ (function () {
     function CourseOperation() {
         this.baseUrl = "https://academic-management-backend.onrender.com/api/v1/courses";
     }
+    //ROLE: ADMIN
     CourseOperation.prototype.create = function (info, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
@@ -708,6 +731,7 @@ var CourseOperation = /** @class */ (function () {
             });
         });
     };
+    //ROLE: ADMIN
     CourseOperation.prototype.update = function (info, condition, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
@@ -736,6 +760,7 @@ var CourseOperation = /** @class */ (function () {
             });
         });
     };
+    //ROLE: ADMIN
     CourseOperation.prototype.delete = function (condition, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
@@ -764,6 +789,7 @@ var CourseOperation = /** @class */ (function () {
             });
         });
     };
+    //ROLE: ADMIN, TEACHER, STUDENT
     CourseOperation.prototype.findAllCourses = function (info, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
@@ -792,6 +818,7 @@ var CourseOperation = /** @class */ (function () {
             });
         });
     };
+    //ROLE: ADMIN, TEACHER, STUDENT
     CourseOperation.prototype.findClasses = function (condition, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
@@ -827,6 +854,7 @@ var ClassOperation = /** @class */ (function () {
     function ClassOperation() {
         this.baseUrl = "https://academic-management-backend.onrender.com/api/v1/classes";
     }
+    //ROLE: ADMIN
     ClassOperation.prototype.create = function (info, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
@@ -855,6 +883,7 @@ var ClassOperation = /** @class */ (function () {
             });
         });
     };
+    //ROLE: TEACHER, STUDENT
     ClassOperation.prototype.register = function (info, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
@@ -883,6 +912,7 @@ var ClassOperation = /** @class */ (function () {
             });
         });
     };
+    //ROLE: TEACHER
     ClassOperation.prototype.updateScore = function (info, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
@@ -911,6 +941,7 @@ var ClassOperation = /** @class */ (function () {
             });
         });
     };
+    //ROLE: TEACHER, STUDENT
     ClassOperation.prototype.cancelRegister = function (info, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
@@ -939,6 +970,7 @@ var ClassOperation = /** @class */ (function () {
             });
         });
     };
+    //ROLE: STUDENT
     ClassOperation.prototype.submitFile = function (info, token) {
         var _a;
         return __awaiter(this, void 0, void 0, function () {
@@ -968,6 +1000,7 @@ var ClassOperation = /** @class */ (function () {
             });
         });
     };
+    //ROLE: STUDENT
     ClassOperation.prototype.deleteSubmitFile = function (info, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
@@ -996,6 +1029,7 @@ var ClassOperation = /** @class */ (function () {
             });
         });
     };
+    //ROLE: TEACHER, STUDENT
     ClassOperation.prototype.showSubmitFile = function (info, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
@@ -1024,6 +1058,7 @@ var ClassOperation = /** @class */ (function () {
             });
         });
     };
+    //ROLE: TEACHER, STUDENT
     ClassOperation.prototype.getSubmitFile = function (info, token) {
         return __awaiter(this, void 0, void 0, function () {
             var response, url, link, error_35;
