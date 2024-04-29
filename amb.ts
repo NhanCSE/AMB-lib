@@ -330,6 +330,19 @@ export interface UpdateTeacherByAdminInfo {
     subject?: string[];
 }
 
+export interface FindingTeacherInfoByAdmin {
+    fullname?: string,                 
+    teacher_id?: string,                              
+    credential_id?: string,                                                           
+    class?: string,                           
+    faculty?: string,    
+    major?: string,                  
+    level?: string,                            
+    program?: string,
+    homeroom_class?: string,
+    phone_number?: string                                                       
+}
+
 class TeacherOperation {
     private baseUrl: string;
     constructor() {
@@ -470,7 +483,7 @@ class TeacherOperation {
     }
 
     //ROLE: ADMNIN
-    async findByAdmin(info: FindingStudentInfoByAdmin, token: token) {
+    async findByAdmin(info: FindingTeacherInfoByAdmin, token: token) {
         try {
             const response: AxiosResponse = await axios.post(`${this.baseUrl}/get`, info, {
                 withCredentials: true,
