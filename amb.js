@@ -255,7 +255,7 @@ var StudentOperation = /** @class */ (function () {
                 switch (_c.label) {
                     case 0:
                         _c.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, axios_1.default.post("".concat(this.baseUrl, "/get"), {
+                        return [4 /*yield*/, axios_1.default.post("".concat(this.baseUrl, "/get"), {}, {
                                 withCredentials: true,
                                 headers: {
                                     Authorization: token.token
@@ -552,7 +552,7 @@ var TeacherOperation = /** @class */ (function () {
                 switch (_c.label) {
                     case 0:
                         _c.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, axios_1.default.post("".concat(this.baseUrl, "/get"), {
+                        return [4 /*yield*/, axios_1.default.post("".concat(this.baseUrl, "/get"), {}, {
                                 withCredentials: true,
                                 headers: {
                                     Authorization: token.token

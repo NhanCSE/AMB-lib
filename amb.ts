@@ -216,7 +216,7 @@ class StudentOperation {
     //ROLE: STUDENT
     async findByStudent(token: token) {
         try {
-            const response: AxiosResponse = await axios.post(`${this.baseUrl}/get`, {
+            const response: AxiosResponse = await axios.post(`${this.baseUrl}/get`, {}, {
                 withCredentials: true,
                 headers: {
                     Authorization: token.token
@@ -466,7 +466,7 @@ class TeacherOperation {
     //ROLE: TEACHER
     async findByTeacher(token: token) {
         try {
-            const response: AxiosResponse = await axios.post(`${this.baseUrl}/get`, {
+            const response: AxiosResponse = await axios.post(`${this.baseUrl}/get`, {}, {
                 withCredentials: true,
                 headers: {
                     Authorization: token.token
