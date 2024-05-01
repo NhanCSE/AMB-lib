@@ -91,7 +91,7 @@ class StudentOperation {
             const data = response.data;
             return { error: data.error, valid: data.valid, message: data.message, token: data.token };
         } catch (error: any) {
-            console.log("Error logging in: ", error?.response?.data);
+            console.log("StudentOperation Error login: ", error?.response?.data);
             console.error("Request that caused the error: ", error?.request);
             return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
         }
@@ -110,7 +110,7 @@ class StudentOperation {
             const data = response.data;
             return { error: data.error, data: data.data, message: data.message };
         } catch (error: any) {
-            console.log("Error create new user: ", error?.response?.data);
+            console.log("StudentOperation Error create new user: ", error?.response?.data);
             console.error("Request that caused the error: ", error?.request);
             return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
         }
@@ -134,7 +134,7 @@ class StudentOperation {
             const data = response.data;
 			return { error: data.error, message: data.message };
         } catch (error: any) {
-            console.error('Error creating orders by file:', error?.response?.data);
+            console.error('StudentOperation Error creating orders by file:', error?.response?.data);
             console.error("Request that caused the error: ", error?.request);
             return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
         }
@@ -153,7 +153,7 @@ class StudentOperation {
             const data = response.data;
             return { error: data.error, data: data.data, message: data.message };
         } catch (error: any) {
-            console.log("Error update new user: ", error?.response?.data);
+            console.log("StudentOperation Error updateByStudent: ", error?.response?.data);
             console.error("Request that caused the error: ", error?.request);
             return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
         }
@@ -172,7 +172,7 @@ class StudentOperation {
             const data = response.data;
             return { error: data.error, data: data.data, message: data.message };
         } catch (error: any) {
-            console.log("Error update new user: ", error?.response?.data);
+            console.log("StudentOperation Error updateByAdmin: ", error?.response?.data);
             console.error("Request that caused the error: ", error?.request);
             return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
         }
@@ -188,7 +188,7 @@ class StudentOperation {
             const data = response.data;
             return { error: data.error, data: data.data, message: data.message };
         } catch (error: any) {
-            console.log("Error update new user: ", error?.response?.data);
+            console.log("StudentOperation Error updatePassword: ", error?.response?.data);
             console.error("Request that caused the error: ", error?.request);
             return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
         }
@@ -207,7 +207,7 @@ class StudentOperation {
             const data = response.data;
             return { error: data.error, data: data.data, message: data.message };
         } catch (error: any) {
-            console.log("Error update new user: ", error?.response?.data);
+            console.log("StudentOperation Error delete: ", error?.response?.data);
             console.error("Request that caused the error: ", error?.request);
             return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
         }
@@ -226,7 +226,7 @@ class StudentOperation {
             const data = response.data;
             return { error: data.error, data: data.data, message: data.message };
         } catch (error: any) {
-            console.log("Error update new user: ", error?.response?.data);
+            console.log("StudentOperation Error findByStudent: ", error?.response?.data);
             console.error("Request that caused the error: ", error?.request);
             return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
         }
@@ -245,7 +245,7 @@ class StudentOperation {
             const data = response.data;
             return { error: data.error, data: data.data, message: data.message };
         } catch (error: any) {
-            console.log("Error update new user: ", error?.response?.data);
+            console.log("StudentOperation Error findByAdmin: ", error?.response?.data);
             console.error("Request that caused the error: ", error?.request);
             return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
         }
@@ -264,7 +264,7 @@ class StudentOperation {
             const data = response.data;
             return { error: data.error, data: data.data, message: data.message };
         } catch (error: any) {
-            console.log("Error update new user: ", error?.response?.data);
+            console.log("StudentOperation Error findStudentRegisteredClass: ", error?.response?.data);
             console.error("Request that caused the error: ", error?.request);
             return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
         }
@@ -283,7 +283,7 @@ class StudentOperation {
             const data = response.data;
             return { error: data.error, data: data.data, message: data.message };
         } catch (error: any) {
-            console.log("Error update new user: ", error?.response?.data);
+            console.log("StudentOperation Error getScore: ", error?.response?.data);
             console.error("Request that caused the error: ", error?.request);
             return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
         }
@@ -362,7 +362,7 @@ class TeacherOperation {
             const data = response.data;
             return { error: data.error, valid: data.valid, message: data.message, token: data.token };
         } catch (error: any) {
-            console.log("Error logging in: ", error?.response?.data);
+            console.log("TeacherOperation Error logging in: ", error?.response?.data);
             console.error("Request that caused the error: ", error?.request);
             return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
         }
@@ -381,7 +381,7 @@ class TeacherOperation {
             const data = response.data;
             return { error: data.error, data: data.data, message: data.message };
         } catch (error: any) {
-            console.log("Error create new user: ", error?.response?.data);
+            console.log("TeacherOperation Error create new user: ", error?.response?.data);
             console.error("Request that caused the error: ", error?.request);
             return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
         }
@@ -400,7 +400,7 @@ class TeacherOperation {
             const data = response.data;
             return { error: data.error, data: data.data, message: data.message };
         } catch (error: any) {
-            console.log("Error update new user: ", error?.response?.data);
+            console.log("TeacherOperation Error updateByTeacher: ", error?.response?.data);
             console.error("Request that caused the error: ", error?.request);
             return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
         }
@@ -419,7 +419,7 @@ class TeacherOperation {
             const data = response.data;
             return { error: data.error, data: data.data, message: data.message };
         } catch (error: any) {
-            console.log("Error update new user: ", error?.response?.data);
+            console.log("TeacherOperation Error updateByAdmin: ", error?.response?.data);
             console.error("Request that caused the error: ", error?.request);
             return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
         }
@@ -438,7 +438,7 @@ class TeacherOperation {
             const data = response.data;
             return { error: data.error, data: data.data, message: data.message };
         } catch (error: any) {
-            console.log("Error update new user: ", error?.response?.data);
+            console.log("TeacherOperation Error updatePassword: ", error?.response?.data);
             console.error("Request that caused the error: ", error?.request);
             return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
         }
@@ -457,7 +457,7 @@ class TeacherOperation {
             const data = response.data;
             return { error: data.error, data: data.data, message: data.message };
         } catch (error: any) {
-            console.log("Error update new user: ", error?.response?.data);
+            console.log("TeacherOperation Error delete: ", error?.response?.data);
             console.error("Request that caused the error: ", error?.request);
             return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
         }
@@ -476,7 +476,7 @@ class TeacherOperation {
             const data = response.data;
             return { error: data.error, data: data.data, message: data.message };
         } catch (error: any) {
-            console.log("Error update new user: ", error?.response?.data);
+            console.log("TeacherOperation Error findByTeacher: ", error?.response?.data);
             console.error("Request that caused the error: ", error?.request);
             return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
         }
@@ -495,7 +495,7 @@ class TeacherOperation {
             const data = response.data;
             return { error: data.error, data: data.data, message: data.message };
         } catch (error: any) {
-            console.log("Error update new user: ", error?.response?.data);
+            console.log("TeacherOperation Error findByAdmin: ", error?.response?.data);
             console.error("Request that caused the error: ", error?.request);
             return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
         }
@@ -514,7 +514,7 @@ class TeacherOperation {
             const data = response.data;
             return { error: data.error, data: data.data, message: data.message };
         } catch (error: any) {
-            console.log("Error update new user: ", error?.response?.data);
+            console.log("TeacherOperation Error findTeacherRegisteredClass: ", error?.response?.data);
             console.error("Request that caused the error: ", error?.request);
             return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
         }
@@ -549,7 +549,7 @@ class AdminOperation {
             const data = response.data;
             return { error: data.error, valid: data.valid, message: data.message, token: data.token };
         } catch (error: any) {
-            console.log("Error logging in: ", error?.response?.data);
+            console.log("AdminOperation Error logging in: ", error?.response?.data);
             console.error("Request that caused the error: ", error?.request);
             return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
         }
@@ -568,7 +568,7 @@ class AdminOperation {
             const data = response.data;
             return { error: data.error, data: data.data, message: data.message };
         } catch (error: any) {
-            console.log("Error create new user: ", error?.response?.data);
+            console.log("AdminOperation Error create new user: ", error?.response?.data);
             console.error("Request that caused the error: ", error?.request);
             return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
         }
@@ -618,7 +618,7 @@ class CourseOperation {
             const data = response.data;
             return { error: data.error, data: data.data, message: data.message };
         } catch (error: any) {
-            console.log("Error create new user: ", error?.response?.data);
+            console.log("CourseOperation Error create: ", error?.response?.data);
             console.error("Request that caused the error: ", error?.request);
             return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
         }
@@ -637,7 +637,7 @@ class CourseOperation {
             const data = response.data;
             return { error: data.error, data: data.data, message: data.message };
         } catch (error: any) {
-            console.log("Error update new user: ", error?.response?.data);
+            console.log("CourseOperation Error update: ", error?.response?.data);
             console.error("Request that caused the error: ", error?.request);
             return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
         }
@@ -656,7 +656,7 @@ class CourseOperation {
             const data = response.data;
             return { error: data.error, data: data.data, message: data.message };
         } catch (error: any) {
-            console.log("Error update new user: ", error?.response?.data);
+            console.log("CourseOperation Error delete: ", error?.response?.data);
             console.error("Request that caused the error: ", error?.request);
             return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
         }
@@ -675,7 +675,7 @@ class CourseOperation {
             const data = response.data;
             return { error: data.error, data: data.data, message: data.message };
         } catch (error: any) {
-            console.log("Error update new user: ", error?.response?.data);
+            console.log("CourseOperation Error findAllCourses: ", error?.response?.data);
             console.error("Request that caused the error: ", error?.request);
             return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
         }
@@ -694,7 +694,7 @@ class CourseOperation {
             const data = response.data;
             return { error: data.error, data: data.data, message: data.message };
         } catch (error: any) {
-            console.log("Error update new user: ", error?.response?.data);
+            console.log("CourseOperation Error findClasses: ", error?.response?.data);
             console.error("Request that caused the error: ", error?.request);
             return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
         }
@@ -758,7 +758,7 @@ class ClassOperation {
             const data = response.data;
             return { error: data.error, data: data.data, message: data.message };
         } catch (error: any) {
-            console.log("Error create new user: ", error?.response?.data);
+            console.log("ClassOperation Error create: ", error?.response?.data);
             console.error("Request that caused the error: ", error?.request);
             return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
         }
@@ -777,7 +777,7 @@ class ClassOperation {
             const data = response.data;
             return { error: data.error, data: data.data, message: data.message };
         } catch (error: any) {
-            console.log("Error create new user: ", error?.response?.data);
+            console.log("ClassOperation Error register: ", error?.response?.data);
             console.error("Request that caused the error: ", error?.request);
             return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
         }
@@ -796,7 +796,7 @@ class ClassOperation {
             const data = response.data;
             return { error: data.error, data: data.data, message: data.message };
         } catch (error: any) {
-            console.log("Error create new user: ", error?.response?.data);
+            console.log("ClassOperation Error updateScore: ", error?.response?.data);
             console.error("Request that caused the error: ", error?.request);
             return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
         }
@@ -815,7 +815,7 @@ class ClassOperation {
             const data = response.data;
             return { error: data.error, data: data.data, message: data.message };
         } catch (error: any) {
-            console.log("Error create new user: ", error?.response?.data);
+            console.log("ClassOperation Error cancelRegister: ", error?.response?.data);
             console.error("Request that caused the error: ", error?.request);
             return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
         }
@@ -836,6 +836,7 @@ class ClassOperation {
             const data = response.data;
             return { error: data.error, data: data.data, message: data.message };
         } catch (error: any) {
+            console.log("ClassOperation Error submitFile: ", error?.response?.data);
             console.error("Request that caused the error: ", error?.request);
             return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
         }
@@ -854,7 +855,7 @@ class ClassOperation {
             const data = response.data;
             return { error: data.error, data: data.data, message: data.message };
         } catch (error: any) {
-            console.log("Error delete file submit: ", error?.response?.data);
+            console.log("ClassOperation Error deleteSubmitFile: ", error?.response?.data);
             console.error("Request that caused the error: ", error?.request);
             return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
         }
@@ -873,7 +874,7 @@ class ClassOperation {
             const data = response.data;
             return { error: data.error, data: data.data, message: data.message };
         } catch (error: any) {
-            console.log("Error create new user: ", error?.response?.data);
+            console.log("ClassOperation Error showSubmitFile: ", error?.response?.data);
             console.error("Request that caused the error: ", error?.request);
             return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
         }
