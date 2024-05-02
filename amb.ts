@@ -822,11 +822,11 @@ class ClassOperation {
     }
 
     //ROLE: STUDENT
-    async submitFile(info: SubmitFile, token: token) {
+    async submitFile(info: SubmitFile, condition: ClassID, token: token) {
         try {
             const formData = new FormData();
 			formData.append('submitFile', info.submitFile);
-            const response: AxiosResponse = await axios.post(`${this.baseUrl}/submit_file`, formData, {
+            const response: AxiosResponse = await axios.post(`${this.baseUrl}/submit_file?class_id=${condition.class_id}`, formData, {
                 withCredentials: true,
                 headers: {
                     Authorization: token.token

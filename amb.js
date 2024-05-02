@@ -971,7 +971,7 @@ var ClassOperation = /** @class */ (function () {
         });
     };
     //ROLE: STUDENT
-    ClassOperation.prototype.submitFile = function (info, token) {
+    ClassOperation.prototype.submitFile = function (info, condition, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
             var formData, response, data, error_32;
@@ -981,7 +981,7 @@ var ClassOperation = /** @class */ (function () {
                         _c.trys.push([0, 2, , 3]);
                         formData = new FormData();
                         formData.append('submitFile', info.submitFile);
-                        return [4 /*yield*/, axios_1.default.post("".concat(this.baseUrl, "/submit_file"), formData, {
+                        return [4 /*yield*/, axios_1.default.post("".concat(this.baseUrl, "/submit_file?class_id=").concat(condition.class_id), formData, {
                                 withCredentials: true,
                                 headers: {
                                     Authorization: token.token
