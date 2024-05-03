@@ -1010,7 +1010,7 @@ var ClassOperation = /** @class */ (function () {
                 switch (_c.label) {
                     case 0:
                         _c.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, axios_1.default.delete("".concat(this.baseUrl, "/delete_file?filename=").concat(info.filename), {
+                        return [4 /*yield*/, axios_1.default.delete("".concat(this.baseUrl, "/delete_file?class_id=").concat(info.class_id, "&filename=").concat(info.filename), {
                                 withCredentials: true,
                                 headers: {
                                     Authorization: token.token

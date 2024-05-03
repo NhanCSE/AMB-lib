@@ -726,6 +726,11 @@ export interface FileName {
     filename: string
 }
 
+export interface DeleteSubmitFileInfo {
+    class_id: string,
+    filename: string
+}
+
 export interface ClassID {
     class_id: string;
 }
@@ -843,9 +848,9 @@ class ClassOperation {
     }
 
     //ROLE: STUDENT
-    async deleteSubmitFile(info: FileName, token: token) {
+    async deleteSubmitFile(info: DeleteSubmitFileInfo, token: token) {
         try {
-            const response: AxiosResponse = await axios.delete(`${this.baseUrl}/delete_file?filename=${info.filename}`, {
+            const response: AxiosResponse = await axios.delete(`${this.baseUrl}/delete_file?class_id=${info.class_id}&filename=${info.filename}`, {
                 withCredentials: true,
                 headers: {
                     Authorization: token.token
