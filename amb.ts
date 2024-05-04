@@ -912,6 +912,24 @@ class ClassOperation {
         }
     }
 
+    async getScoreForTeacher(info: ClassID, token: token) {
+        try {
+            const response: AxiosResponse = await axios.get(`${this.baseUrl}/get_score?class_id=${info.class_id}`, {
+                withCredentials: true,
+                headers: {
+                    Authorization: token.token
+                }
+            });
+            
+            const data = response.data;
+            return { error: data.error, data: data.data, message: data.message };
+        } catch (error: any) {
+            console.log("ClassOperation Error showSubmitFile: ", error?.response?.data);
+            console.error("Request that caused the error: ", error?.request);
+            return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
+        }
+    }
+
 }
 
 export {
