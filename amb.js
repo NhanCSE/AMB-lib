@@ -883,11 +883,40 @@ var ClassOperation = /** @class */ (function () {
             });
         });
     };
+    //ROLE: ADMIN, TEACHER, STUDENT
+    ClassOperation.prototype.getClassInfo = function (info, token) {
+        var _a, _b;
+        return __awaiter(this, void 0, void 0, function () {
+            var response, data, error_29;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
+                    case 0:
+                        _c.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, axios_1.default.get("".concat(this.baseUrl, "/get?class_id=").concat(info.class_id), {
+                                withCredentials: true,
+                                headers: {
+                                    Authorization: token.token
+                                }
+                            })];
+                    case 1:
+                        response = _c.sent();
+                        data = response.data;
+                        return [2 /*return*/, { error: data.error, data: data.data, message: data.message }];
+                    case 2:
+                        error_29 = _c.sent();
+                        console.log("ClassOperation Error create: ", (_a = error_29 === null || error_29 === void 0 ? void 0 : error_29.response) === null || _a === void 0 ? void 0 : _a.data);
+                        console.error("Request that caused the error: ", error_29 === null || error_29 === void 0 ? void 0 : error_29.request);
+                        return [2 /*return*/, { error: (_b = error_29 === null || error_29 === void 0 ? void 0 : error_29.response) === null || _b === void 0 ? void 0 : _b.data, request: error_29 === null || error_29 === void 0 ? void 0 : error_29.request, status: error_29.response ? error_29.response.status : null }];
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
     //ROLE: TEACHER, STUDENT
     ClassOperation.prototype.register = function (info, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
-            var response, data, error_29;
+            var response, data, error_30;
             return __generator(this, function (_c) {
                 switch (_c.label) {
                     case 0:
@@ -903,10 +932,10 @@ var ClassOperation = /** @class */ (function () {
                         data = response.data;
                         return [2 /*return*/, { error: data.error, data: data.data, message: data.message }];
                     case 2:
-                        error_29 = _c.sent();
-                        console.log("ClassOperation Error register: ", (_a = error_29 === null || error_29 === void 0 ? void 0 : error_29.response) === null || _a === void 0 ? void 0 : _a.data);
-                        console.error("Request that caused the error: ", error_29 === null || error_29 === void 0 ? void 0 : error_29.request);
-                        return [2 /*return*/, { error: (_b = error_29 === null || error_29 === void 0 ? void 0 : error_29.response) === null || _b === void 0 ? void 0 : _b.data, request: error_29 === null || error_29 === void 0 ? void 0 : error_29.request, status: error_29.response ? error_29.response.status : null }];
+                        error_30 = _c.sent();
+                        console.log("ClassOperation Error register: ", (_a = error_30 === null || error_30 === void 0 ? void 0 : error_30.response) === null || _a === void 0 ? void 0 : _a.data);
+                        console.error("Request that caused the error: ", error_30 === null || error_30 === void 0 ? void 0 : error_30.request);
+                        return [2 /*return*/, { error: (_b = error_30 === null || error_30 === void 0 ? void 0 : error_30.response) === null || _b === void 0 ? void 0 : _b.data, request: error_30 === null || error_30 === void 0 ? void 0 : error_30.request, status: error_30.response ? error_30.response.status : null }];
                     case 3: return [2 /*return*/];
                 }
             });
@@ -916,7 +945,7 @@ var ClassOperation = /** @class */ (function () {
     ClassOperation.prototype.updateScore = function (info, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
-            var response, data, error_30;
+            var response, data, error_31;
             return __generator(this, function (_c) {
                 switch (_c.label) {
                     case 0:
@@ -932,10 +961,10 @@ var ClassOperation = /** @class */ (function () {
                         data = response.data;
                         return [2 /*return*/, { error: data.error, data: data.data, message: data.message }];
                     case 2:
-                        error_30 = _c.sent();
-                        console.log("ClassOperation Error updateScore: ", (_a = error_30 === null || error_30 === void 0 ? void 0 : error_30.response) === null || _a === void 0 ? void 0 : _a.data);
-                        console.error("Request that caused the error: ", error_30 === null || error_30 === void 0 ? void 0 : error_30.request);
-                        return [2 /*return*/, { error: (_b = error_30 === null || error_30 === void 0 ? void 0 : error_30.response) === null || _b === void 0 ? void 0 : _b.data, request: error_30 === null || error_30 === void 0 ? void 0 : error_30.request, status: error_30.response ? error_30.response.status : null }];
+                        error_31 = _c.sent();
+                        console.log("ClassOperation Error updateScore: ", (_a = error_31 === null || error_31 === void 0 ? void 0 : error_31.response) === null || _a === void 0 ? void 0 : _a.data);
+                        console.error("Request that caused the error: ", error_31 === null || error_31 === void 0 ? void 0 : error_31.request);
+                        return [2 /*return*/, { error: (_b = error_31 === null || error_31 === void 0 ? void 0 : error_31.response) === null || _b === void 0 ? void 0 : _b.data, request: error_31 === null || error_31 === void 0 ? void 0 : error_31.request, status: error_31.response ? error_31.response.status : null }];
                     case 3: return [2 /*return*/];
                 }
             });
@@ -945,7 +974,7 @@ var ClassOperation = /** @class */ (function () {
     ClassOperation.prototype.cancelRegister = function (info, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
-            var response, data, error_31;
+            var response, data, error_32;
             return __generator(this, function (_c) {
                 switch (_c.label) {
                     case 0:
@@ -961,10 +990,10 @@ var ClassOperation = /** @class */ (function () {
                         data = response.data;
                         return [2 /*return*/, { error: data.error, data: data.data, message: data.message }];
                     case 2:
-                        error_31 = _c.sent();
-                        console.log("ClassOperation Error cancelRegister: ", (_a = error_31 === null || error_31 === void 0 ? void 0 : error_31.response) === null || _a === void 0 ? void 0 : _a.data);
-                        console.error("Request that caused the error: ", error_31 === null || error_31 === void 0 ? void 0 : error_31.request);
-                        return [2 /*return*/, { error: (_b = error_31 === null || error_31 === void 0 ? void 0 : error_31.response) === null || _b === void 0 ? void 0 : _b.data, request: error_31 === null || error_31 === void 0 ? void 0 : error_31.request, status: error_31.response ? error_31.response.status : null }];
+                        error_32 = _c.sent();
+                        console.log("ClassOperation Error cancelRegister: ", (_a = error_32 === null || error_32 === void 0 ? void 0 : error_32.response) === null || _a === void 0 ? void 0 : _a.data);
+                        console.error("Request that caused the error: ", error_32 === null || error_32 === void 0 ? void 0 : error_32.request);
+                        return [2 /*return*/, { error: (_b = error_32 === null || error_32 === void 0 ? void 0 : error_32.response) === null || _b === void 0 ? void 0 : _b.data, request: error_32 === null || error_32 === void 0 ? void 0 : error_32.request, status: error_32.response ? error_32.response.status : null }];
                     case 3: return [2 /*return*/];
                 }
             });
@@ -974,7 +1003,7 @@ var ClassOperation = /** @class */ (function () {
     ClassOperation.prototype.submitFile = function (info, condition, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
-            var formData, response, data, error_32;
+            var formData, response, data, error_33;
             return __generator(this, function (_c) {
                 switch (_c.label) {
                     case 0:
@@ -992,10 +1021,10 @@ var ClassOperation = /** @class */ (function () {
                         data = response.data;
                         return [2 /*return*/, { error: data.error, data: data.data, message: data.message }];
                     case 2:
-                        error_32 = _c.sent();
-                        console.log("ClassOperation Error submitFile: ", (_a = error_32 === null || error_32 === void 0 ? void 0 : error_32.response) === null || _a === void 0 ? void 0 : _a.data);
-                        console.error("Request that caused the error: ", error_32 === null || error_32 === void 0 ? void 0 : error_32.request);
-                        return [2 /*return*/, { error: (_b = error_32 === null || error_32 === void 0 ? void 0 : error_32.response) === null || _b === void 0 ? void 0 : _b.data, request: error_32 === null || error_32 === void 0 ? void 0 : error_32.request, status: error_32.response ? error_32.response.status : null }];
+                        error_33 = _c.sent();
+                        console.log("ClassOperation Error submitFile: ", (_a = error_33 === null || error_33 === void 0 ? void 0 : error_33.response) === null || _a === void 0 ? void 0 : _a.data);
+                        console.error("Request that caused the error: ", error_33 === null || error_33 === void 0 ? void 0 : error_33.request);
+                        return [2 /*return*/, { error: (_b = error_33 === null || error_33 === void 0 ? void 0 : error_33.response) === null || _b === void 0 ? void 0 : _b.data, request: error_33 === null || error_33 === void 0 ? void 0 : error_33.request, status: error_33.response ? error_33.response.status : null }];
                     case 3: return [2 /*return*/];
                 }
             });
@@ -1005,7 +1034,7 @@ var ClassOperation = /** @class */ (function () {
     ClassOperation.prototype.deleteSubmitFile = function (info, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
-            var response, data, error_33;
+            var response, data, error_34;
             return __generator(this, function (_c) {
                 switch (_c.label) {
                     case 0:
@@ -1021,10 +1050,10 @@ var ClassOperation = /** @class */ (function () {
                         data = response.data;
                         return [2 /*return*/, { error: data.error, data: data.data, message: data.message }];
                     case 2:
-                        error_33 = _c.sent();
-                        console.log("ClassOperation Error deleteSubmitFile: ", (_a = error_33 === null || error_33 === void 0 ? void 0 : error_33.response) === null || _a === void 0 ? void 0 : _a.data);
-                        console.error("Request that caused the error: ", error_33 === null || error_33 === void 0 ? void 0 : error_33.request);
-                        return [2 /*return*/, { error: (_b = error_33 === null || error_33 === void 0 ? void 0 : error_33.response) === null || _b === void 0 ? void 0 : _b.data, request: error_33 === null || error_33 === void 0 ? void 0 : error_33.request, status: error_33.response ? error_33.response.status : null }];
+                        error_34 = _c.sent();
+                        console.log("ClassOperation Error deleteSubmitFile: ", (_a = error_34 === null || error_34 === void 0 ? void 0 : error_34.response) === null || _a === void 0 ? void 0 : _a.data);
+                        console.error("Request that caused the error: ", error_34 === null || error_34 === void 0 ? void 0 : error_34.request);
+                        return [2 /*return*/, { error: (_b = error_34 === null || error_34 === void 0 ? void 0 : error_34.response) === null || _b === void 0 ? void 0 : _b.data, request: error_34 === null || error_34 === void 0 ? void 0 : error_34.request, status: error_34.response ? error_34.response.status : null }];
                     case 3: return [2 /*return*/];
                 }
             });
@@ -1034,7 +1063,7 @@ var ClassOperation = /** @class */ (function () {
     ClassOperation.prototype.showSubmitFile = function (info, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
-            var response, data, error_34;
+            var response, data, error_35;
             return __generator(this, function (_c) {
                 switch (_c.label) {
                     case 0:
@@ -1050,10 +1079,10 @@ var ClassOperation = /** @class */ (function () {
                         data = response.data;
                         return [2 /*return*/, { error: data.error, data: data.data, message: data.message }];
                     case 2:
-                        error_34 = _c.sent();
-                        console.log("ClassOperation Error showSubmitFile: ", (_a = error_34 === null || error_34 === void 0 ? void 0 : error_34.response) === null || _a === void 0 ? void 0 : _a.data);
-                        console.error("Request that caused the error: ", error_34 === null || error_34 === void 0 ? void 0 : error_34.request);
-                        return [2 /*return*/, { error: (_b = error_34 === null || error_34 === void 0 ? void 0 : error_34.response) === null || _b === void 0 ? void 0 : _b.data, request: error_34 === null || error_34 === void 0 ? void 0 : error_34.request, status: error_34.response ? error_34.response.status : null }];
+                        error_35 = _c.sent();
+                        console.log("ClassOperation Error showSubmitFile: ", (_a = error_35 === null || error_35 === void 0 ? void 0 : error_35.response) === null || _a === void 0 ? void 0 : _a.data);
+                        console.error("Request that caused the error: ", error_35 === null || error_35 === void 0 ? void 0 : error_35.request);
+                        return [2 /*return*/, { error: (_b = error_35 === null || error_35 === void 0 ? void 0 : error_35.response) === null || _b === void 0 ? void 0 : _b.data, request: error_35 === null || error_35 === void 0 ? void 0 : error_35.request, status: error_35.response ? error_35.response.status : null }];
                     case 3: return [2 /*return*/];
                 }
             });
@@ -1062,7 +1091,7 @@ var ClassOperation = /** @class */ (function () {
     //ROLE: TEACHER, STUDENT
     ClassOperation.prototype.getSubmitFile = function (info, token) {
         return __awaiter(this, void 0, void 0, function () {
-            var response, url, link, error_35;
+            var response, url, link, error_36;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -1085,8 +1114,8 @@ var ClassOperation = /** @class */ (function () {
                         link.remove();
                         return [2 /*return*/, { success: true }];
                     case 2:
-                        error_35 = _a.sent();
-                        console.error('Error downloading files:', error_35);
+                        error_36 = _a.sent();
+                        console.error('Error downloading files:', error_36);
                         return [2 /*return*/, { success: false, error: 'Error downloading files' }];
                     case 3: return [2 /*return*/];
                 }
@@ -1096,7 +1125,7 @@ var ClassOperation = /** @class */ (function () {
     ClassOperation.prototype.getScoreForTeacher = function (info, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
-            var response, data, error_36;
+            var response, data, error_37;
             return __generator(this, function (_c) {
                 switch (_c.label) {
                     case 0:
@@ -1112,10 +1141,10 @@ var ClassOperation = /** @class */ (function () {
                         data = response.data;
                         return [2 /*return*/, { error: data.error, data: data.data, message: data.message }];
                     case 2:
-                        error_36 = _c.sent();
-                        console.log("ClassOperation Error showSubmitFile: ", (_a = error_36 === null || error_36 === void 0 ? void 0 : error_36.response) === null || _a === void 0 ? void 0 : _a.data);
-                        console.error("Request that caused the error: ", error_36 === null || error_36 === void 0 ? void 0 : error_36.request);
-                        return [2 /*return*/, { error: (_b = error_36 === null || error_36 === void 0 ? void 0 : error_36.response) === null || _b === void 0 ? void 0 : _b.data, request: error_36 === null || error_36 === void 0 ? void 0 : error_36.request, status: error_36.response ? error_36.response.status : null }];
+                        error_37 = _c.sent();
+                        console.log("ClassOperation Error showSubmitFile: ", (_a = error_37 === null || error_37 === void 0 ? void 0 : error_37.response) === null || _a === void 0 ? void 0 : _a.data);
+                        console.error("Request that caused the error: ", error_37 === null || error_37 === void 0 ? void 0 : error_37.request);
+                        return [2 /*return*/, { error: (_b = error_37 === null || error_37 === void 0 ? void 0 : error_37.response) === null || _b === void 0 ? void 0 : _b.data, request: error_37 === null || error_37 === void 0 ? void 0 : error_37.request, status: error_37.response ? error_37.response.status : null }];
                     case 3: return [2 /*return*/];
                 }
             });
