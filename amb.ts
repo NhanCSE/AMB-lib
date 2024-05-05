@@ -809,9 +809,9 @@ class ClassOperation {
     }
     
     //ROLE: TEACHER
-    async updateScore(info: UpdateScoreInfo, token: token) {
+    async updateScore(info: UpdateScoreInfo, condition: ClassID, token: token) {
         try {
-            const response: AxiosResponse = await axios.post(`${this.baseUrl}/update_score`, info, {
+            const response: AxiosResponse = await axios.post(`${this.baseUrl}/update_score?class_id=${condition.class_id}`, info, {
                 withCredentials: true,
                 headers: {
                     Authorization: token.token

@@ -942,7 +942,7 @@ var ClassOperation = /** @class */ (function () {
         });
     };
     //ROLE: TEACHER
-    ClassOperation.prototype.updateScore = function (info, token) {
+    ClassOperation.prototype.updateScore = function (info, condition, token) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
             var response, data, error_31;
@@ -950,7 +950,7 @@ var ClassOperation = /** @class */ (function () {
                 switch (_c.label) {
                     case 0:
                         _c.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, axios_1.default.post("".concat(this.baseUrl, "/update_score"), info, {
+                        return [4 /*yield*/, axios_1.default.post("".concat(this.baseUrl, "/update_score?class_id=").concat(condition.class_id), info, {
                                 withCredentials: true,
                                 headers: {
                                     Authorization: token.token
