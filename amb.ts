@@ -770,6 +770,25 @@ class ClassOperation {
     }
 
     //ROLE: ADMIN, TEACHER, STUDENT
+    async getStudentInClass(info: ClassID, token: token) {
+        try {
+            const response: AxiosResponse = await axios.get(`${this.baseUrl}/get_students?class_id=${info.class_id}`, {
+                withCredentials: true,
+                headers: {
+                    Authorization: token.token
+                }
+            });
+            
+            const data = response.data;
+            return { error: data.error, data: data.data, message: data.message };
+        } catch (error: any) {
+            console.log("ClassOperation Error create: ", error?.response?.data);
+            console.error("Request that caused the error: ", error?.request);
+            return { error: error?.response?.data, request: error?.request, status: error.response ? error.response.status : null };
+        }
+    }
+
+    //ROLE: ADMIN, TEACHER, STUDENT
     async getClassInfo(info: ClassID, token: token) {
         try {
             const response: AxiosResponse = await axios.get(`${this.baseUrl}/get?class_id=${info.class_id}`, {
